@@ -1,0 +1,41 @@
+{
+  "courses": [
+    {
+      "id": 10,
+      "title": "Web Component Fundamentals",
+      "slug": "web-components-shadow-dom",
+      "authorId": 1,
+      "category": "HTML5"
+    },
+    {
+      "id": 11,
+      "slug": "d-veloppeur-administrateur-r-seau",
+      "title": "Développeur & Administrateur réseau",
+      "authorId": 1,
+      "category": "nabil allam",
+      "createdAt": 1586475277139
+    },
+    {
+      "id": 12,
+      "slug": "java-dev",
+      "title": "java dev",
+      "authorId": 1,
+      "category": "Développeur ",
+      "createdAt": 1586475398274
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Cory House"
+    },
+    {
+      "id": 2,
+      "name": "Scott Allen"
+    },
+    {
+      "id": 3,
+      "name": "Dan Wahlin"
+    }
+  ]
+}
