@@ -2,6 +2,8 @@ import { EventEmitter } from "events";
 import Dispatcher from "../appDispatcher";
 import actionTypes from "../actions/actionTypes";
 import { toast } from "react-toastify";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CHANGE_EVENT = "change";
 let _courses = [];
@@ -29,18 +31,34 @@ const store = new CourseStore();
 Dispatcher.register((action) => {
   switch (action.actionType) {
     case actionTypes.DELETE_COURSE:
-      _courses = _courses.filter(
-        (course) => course.id !== parseInt(action.id, 10)
-      );
-      toast.error("🦄 Course deleated.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+      confirmAlert({
+        title: "Confirm to submit",
+        message: "Are you sure to do this.",
+        buttons: [
+          {
+            label: "Yes",
+            onClick: () => {
+              _courses = _courses.filter(
+                (course) => course.id !== parseInt(action.id, 10)
+              );
+              toast.error("🦄 Course deleated.", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+              });
+              store.emitChange();
+            },
+          },
+          {
+            label: "No",
+            onClick: () => alert("canclled"),
+          },
+        ],
       });
-      store.emitChange();
+
       break;
     case actionTypes.CREATE_COURSE:
       _courses.push(action.course);
